@@ -6,7 +6,7 @@ from .models import User
 
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
-        (None, {'fields': ('email', 'password', 'name', 'last_login','company')}),
+        (None, {'fields': ('email', 'password', 'name', 'last_login','company','display_name')}),
         ('Permissions', {'fields': (
             'is_active', 
             'is_staff', 
@@ -26,7 +26,7 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
-    list_display = ('email', 'name', 'is_staff', 'last_login', 'company')
+    list_display = ('email','display_name', 'name', 'is_staff', 'last_login', 'company')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('email',)
     ordering = ('email',)

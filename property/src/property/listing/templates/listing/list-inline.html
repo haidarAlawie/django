@@ -1,0 +1,68 @@
+<!-- <div class='col-12 col-md-7 mb-3 mt-2 mx-auto'>
+	<div class='card bg-info' >
+		<div class='card-body' width="600px" height="100">
+			{% if listing_post.image %}
+				<img src="{{ listing_post.image.url }} " class ='card-img-top'/>
+				{% endif %} 
+			<h5 class = 'card-title'> {{object.title}}</h5>
+
+			<p class='card-text'> 
+			{% if truncate %}
+				{{object.title | linebreaks | truncatewords:30}}</p>
+				{% else %}
+				{{listing_post.title | linebreaks}}
+			{% endif %}
+			<a href="google.com">View </a>
+
+		</div>
+	</div>
+</div> -->
+<!-- <div class="container-fluid" style="margin-top:50px">
+	<div class="row bg-info"  >
+		<div class="col-6 bg-danger" style="height: 410px;">
+				<div class='card'>
+					<div class='card-body'  >
+						{% if listing_post.image %}
+				<img src="{{ listing_post.image.url }} " class ='card-img-top' style="max-height: 410;"/>
+				{% endif %} 
+					</div>
+
+				</div>
+				
+		</div>
+		<div class="col-6 bg-success">
+			<div class="row bg-danger" style="height:110px;">
+			
+			</div>
+		</div>
+
+		</div>
+	</div>
+ -->
+
+ <div class="container" align="center" >
+<div class="col-12" >
+<div class="card mb-5" style="max-width: 940px; min-height: 150px;" >
+  <div class="row no-gutters" >
+    <div class="col-md-4">
+      {% if listing_post.image %}
+				<img src="{{ listing_post.image.url }} " class ='card-img-top'/>
+				{% endif %} 
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title"> <a href="../development/{{object.slug}}">{{object.title}}</a></h4>
+       <div class="text-danger"style="float:right; position:relative;"> <h6 class="card-title"> £{{object.price}}</h6></div>
+       <br/>
+        <p class="card-text">{% if truncate %}
+				{{object.description | linebreaks | truncatewords:30}}</p>
+				{% else %}
+				{{listing_post.title | linebreaks}}
+			{% endif %}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

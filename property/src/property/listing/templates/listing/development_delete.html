@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+
+{% block main%}
+<h1> Are you sure you want to delete the following:</h1>
+	<h2> {{object.title}}</h2>
+
+
+	<p> {{object.price}} </p>
+	<p> {{object.postcode}} </p>
+	<p> {{object.number_of_properties}} </p>
+	<form method='POST'>{% csrf_token %}
+		<button type="submit" name= "submit" class="btn btn-danger"> DELETE </button>
+	
+
+	</form>
+{% endblock %}

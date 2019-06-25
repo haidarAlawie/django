@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+
+<div class= 'row' style="margin-top: 40px;">
+
+	{% for object in object_list %}
+	
+
+{% include 'listing/list-inline.html' with listing_post=object truncate=True  %}
+
+	{% endfor%}
+</div>
+{% endblock %}

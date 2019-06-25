@@ -1,27 +1,127 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'base.html'%}
+{%block head%}
+<style>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+.body{
+  background-image: url(media/image/buildings1.png); 
+  background-size:cover; 
+  height: 80vh; 
+  background-position: center center;
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Prop</h1>
-    <form>
-      <h1> This is a form </h1>
-      {% block content%}
 
-      {% endblock %}
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+}
+.banner-area h2 {
+  position: absolute;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width:100%;
+  text-align:center;
+  margin:0;
+  padding:0;
+  font-family:Poppins;
+  color:#fff;
+  font-size:4.5em;
+
+
+}
+.banner-area h2 span{
+  color:#3194C8;
+    -webkit-text-stroke-width: 0.2px;
+    font-family: Lucida;
+ 
+  
+}
+.banner-area input[type=text] {
+
+  position: absolute;
+  top:55%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('/image/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  width:30%;
+}
+.banner-area input[type=text]:focus {
+  width: 50%;
+}
+#back{
+  position: absolute;
+  top:47.5%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background-color: black;
+  width:65%;
+    filter: blur(100px);
+  height: 190px;
+}
+</style>
+
+
+
+
+{%endblock%}
+
+
+
+{% block main %}
+<div class="container-fluid">
+  <div class="body">
+    <div id="back">
+    </div>
+    <div class="banner-area">
+      <h2> Search for: <span class="type"> </span></h2>
+    </div>
+    <div class="banner-area">
+      <p> hello </p>
+      <form>
+        <input type="text" name="search" placeholder="e.g. 'York', 'NW3' 5TY' or 'Waterloo Station'">
+      </form>
+    </div>
+  
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+<script>
+
+  var typed3 = new Typed('.type', {
+    strings: [
+     "<strong>Developments </strong>",
+      "Developments",
+      "Portfolios",
+      "Funding",
+      
+
+    ],
+    typeSpeed: 80,
+    backSpeed: 60,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+
+</script> 
+
+{% endblock %}
+
+
+
+
+
+
+
+{%block bottom%}
+
+{%endblock%}

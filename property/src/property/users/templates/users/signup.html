@@ -2,7 +2,8 @@
 {% load crispy_forms_tags %}
 
 {% block main %}
-<div class="container col-6 ">
+
+<div class="container col-6 " style=" min-height: 200px;">
 	<br/>
 	<h1> Sign up </h1>
 	<br/>
@@ -11,5 +12,6 @@
     {{ form|crispy }}
     <center><button type="submit"  class="btn btn-success btn-lg">Login</button></center>
 </form>
+</div>
 </div>
 {% endblock %}
