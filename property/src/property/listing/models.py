@@ -1,7 +1,52 @@
 from django.conf import settings
 from django.db import models
+from django.db.models import Q
+from django.utils import timezone
 
 User = settings.AUTH_USER_MODEL
+
+class ListingQuerySet(models.QuerySet):
+	def search(self, query):
+		return self.filter(title__icontains = query)
+
+
+class ListingManager(models.Manager):
+	def get_queryset(self):
+		return ListingQuerySet(self.model, using=self._db)
+
+	def search(self, query):
+		lookup = (Q(title__icontains=query)|
+		Q(description__icontains= query)|Q(slug__icontains=query))
+		return self.filter(lookup)
+	# def search(self,query = None):
+	# 	if query is None:
+	# 		return self.get_queryset().none()
+	# 	return self.get_queryset().search(query)
+
+# User = settings.AUTH_USER_MODEL
+
+# class ListingQuerySet(models.QuerySet,query):
+# 	def search(self):
+# 		return self.filter(title__iexact=query)
+
+# class ListingPostManager(models.Manager):
+	
+# 	def get_queryset(self):
+# 		return ListingQuerySet(self.model, using=self._db)
+
+# 	def search(self, query=None):
+# 		if query is None:
+# 			return self.get_queryset().none()
+
+# 		return self.get_queryset().search()
+
+
+
+
+
+
+
+
 
 class ListingPostDevelopment(models.Model):
 	user = models.ForeignKey(User, default =1,null = True, on_delete= models.SET_NULL)
@@ -18,6 +63,7 @@ class ListingPostDevelopment(models.Model):
 	rent = models.DecimalField(null= True ,max_digits=10, decimal_places=2)
 	ownership = models.CharField(null= True ,max_length=50)
 	tenure  = models.CharField(null= True ,unique=True,max_length=50) 
+	objects = ListingManager()
 
 	def get_absolute_development_url(self):
 		return f"/listing/development/{self.slug}"

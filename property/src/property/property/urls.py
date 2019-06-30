@@ -20,9 +20,11 @@ from .views import index_page
 
 urlpatterns = [
 	path('', index_page),
-    path('admin/', admin.site.urls),
+
+    path('search/', include('searches.urls')),
     path('listing/', include('listing.urls')),
     path('accounts/', include('users.urls')),
+    path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
     from django.conf.urls.static import static

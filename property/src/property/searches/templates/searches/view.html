@@ -1,0 +1,64 @@
+{%extends "base.html"%}
+{%block head%}
+<style>
+input[type=search] {
+
+  position: absolute;
+  margin-top:50px;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('/image/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  max-width: 480px;
+  width:90%;
+}
+#search_button{
+	margin-top:75px;
+	float:left;
+}
+
+</style>
+
+{%endblock%}
+{%block main%}
+
+<div class="row">
+	<div class = 'col-12 col-8 mx-auto'>
+		{% if query %}
+		<p class='lead'>You searched for {{ query }}</p>
+		
+		{%else%}
+		<div class="row">
+			<div class="col-7">
+		<p class='lead'>You did not searched anything</p>
+		<form action='/search/'>
+        <input type="search" name="q" placeholder="e.g. 'York', 'NW3' 5TY' or 'Waterloo Station'">
+    </div>
+   <!--  <div class="col-1">
+    	<div id="search_button">
+           <button class="btn btn-outline-success my-2 my-sm-0" type="search"> Search </button> -->
+           {%endif%}
+      </form>
+  </div>
+
+  </div>
+		
+	</div>
+  {% for object in object_list %}
+
+{% include 'listing/list-inline.html' with listing_post=object truncate=True  %}
+
+{%endfor%}
+
+</div>
+{%endblock%}

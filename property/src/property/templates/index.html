@@ -33,7 +33,7 @@
  
   
 }
-.banner-area input[type=text] {
+.banner-area input[type=search] {
 
   position: absolute;
   top:55%;
@@ -53,7 +53,7 @@
   transition: width 0.4s ease-in-out;
   width:30%;
 }
-.banner-area input[type=text]:focus {
+.banner-area input[type=search]:focus {
   width: 50%;
 }
 #back{
@@ -85,8 +85,8 @@
     </div>
     <div class="banner-area">
       <p> hello </p>
-      <form>
-        <input type="text" name="search" placeholder="e.g. 'York', 'NW3' 5TY' or 'Waterloo Station'">
+      <form action='/search/'>
+        <input type="search" name="q" placeholder="e.g. 'York', 'NW3' 5TY' or 'Waterloo Station'">
       </form>
     </div>
   
