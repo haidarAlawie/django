@@ -17,3 +17,9 @@ def search_view(request):
 		object_list = ListingPostDevelopment.objects.search(query=query)
 		context['object_list'] = object_list
 	return render(request, template_name, context)
+
+def listing_development_detail_view(request, slug):
+	obj = get_object_or_404(ListingPostDevelopment, slug= slug)
+	template_name= 'searches/development_detail.html'
+	context = {'object': obj}
+	return render(request, template_name, context)

@@ -9,8 +9,19 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+#email settings
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_HOST_USE= 'propertywebsite6@gmail.com'
+EMAIL_HOST_PASSWORD ='Lebanon123'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 import os
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

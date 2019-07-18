@@ -1,0 +1,28 @@
+<div class="container" align="center" >
+	<div class="col-12" >
+<div class="card mb-5" style="max-width: 940px; min-height: 150px;" >
+  <div class="row no-gutters" >
+    <div class="col-md-4">
+      {% if listing_post.image %}
+				<img src="{{ listing_post.image.url }} " class ='card-img-top'/>
+        {%else %}
+        <p>Image not found </p>
+				{% endif %} 
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title"> <a href="../development/{{object.slug}}">{{object.title}}</a></h4>
+       <div class="text-danger"style="float:right; position:relative;"> <h6 class="card-title"> £{{object.price}}</h6></div>
+       <br/>
+        <p class="card-text">{% if truncate %}
+				{{object.description | linebreaks | truncatewords:30}}</p>
+				{% else %}
+				{{listing_post.title | linebreaks}}
+			{% endif %}</p>
+        <p class="card-text"><small class="text-muted">Last updated ~ mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

@@ -1,11 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
 
 {% block main %}
+{% include 'navbar.html'%}
 
 <div class="container col-6 " style=" min-height: 200px;">
 	<br/>
-	<h1> Sign up </h1>
+	<h1 style="font-family:Ariel;"> Create a new listing </h1>
+	<br/>
+	<h4> Please enter the correct details below </h4>
+	<h6 style="color:red;">All fields with with a (*) must be filled in</h6> 
 	<br/>
 <form  method="post" action='.' enctype='multipart/form-data'>
     {% csrf_token %}

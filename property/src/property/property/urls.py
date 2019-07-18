@@ -20,7 +20,7 @@ from .views import index_page
 
 urlpatterns = [
 	path('', index_page),
-
+    
     path('search/', include('searches.urls')),
     path('listing/', include('listing.urls')),
     path('accounts/', include('users.urls')),

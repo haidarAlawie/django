@@ -53,4 +53,5 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_absolute_url(self):
         return "/users/%i/" % (self.pk)
 
+
 # Create your models here.

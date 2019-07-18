@@ -3,17 +3,14 @@
 <style>
 
 .body{
-  background-image: url(media/image/buildings1.png); 
+  background-image: url(media/image/valley.jpg); 
   background-size:cover; 
   height: 80vh; 
   background-position: center center;
-
-
-
 }
+
 .banner-area h2 {
   position: absolute;
-  top:40%;
   left:50%;
   transform: translate(-50%,-50%);
   width:100%;
@@ -23,11 +20,9 @@
   font-family:Poppins;
   color:#fff;
   font-size:4.5em;
-
-
 }
 .banner-area h2 span{
-  color:#3194C8;
+  color:#D4AF37;
     -webkit-text-stroke-width: 0.2px;
     font-family: Lucida;
  
@@ -35,8 +30,6 @@
 }
 .banner-area input[type=search] {
 
-  position: absolute;
-  top:55%;
   left:50%;
   transform: translate(-50%,-50%);
   width: 130px;
@@ -58,14 +51,18 @@
 }
 #back{
   position: absolute;
-  top:47.5%;
+
   left:50%;
   transform: translate(-50%,-50%);
   background-color: black;
   width:65%;
     filter: blur(100px);
   height: 190px;
+  opacity: 0.7;
+
 }
+
+
 </style>
 
 
@@ -76,21 +73,24 @@
 
 
 {% block main %}
-<div class="container-fluid">
+
   <div class="body">
-    <div id="back">
+   <div class="row">
+      <div class="col" >
+    <div class="banner-area">
+      {% include 'navbar.html'%}
+      <h2 style=" margin-top:8%; z-index:2; color:ghostwhite;" > Search for: <span class="type"> </span></h2>
     </div>
     <div class="banner-area">
-      <h2> Search for: <span class="type"> </span></h2>
+       <div id="back" style=" margin-top:8%; z-index:1;">
     </div>
-    <div class="banner-area">
-      <p> hello </p>
       <form action='/search/'>
-        <input type="search" name="q" placeholder="e.g. 'York', 'NW3' 5TY' or 'Waterloo Station'">
+        <input colour="white" style="margin-left:50%; margin-top:15%; "type="search" id="autocomplete" name="q"  placeholder="e.g. 'York', 'NW3' 5TY' or 'Waterloo Station'">
       </form>
     </div>
   
   </div>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
@@ -113,6 +113,37 @@
 
 
 </script> 
+<div  style="background-color:white; margin-top:70px;">
+  <div class="row">
+    <div class="col-md-4">
+     <center> 
+        <h2>  Recent listings </h2></center>
+        <br/><br/><br/>
+      </div>
+    </div>
+
+           {% for object in ListingPostDevelopment_list %}
+           <div class="col">
+           
+
+
+
+
+             {% include 'listing/list-inline.html' with blog_post=a truncate=True %}
+           </div>
+           
+         </div>
+       </center>
+            {% endfor %} </h2></center>
+    </div>
+    
+
+
+
+
+
+
+</div>
 
 {% endblock %}
 

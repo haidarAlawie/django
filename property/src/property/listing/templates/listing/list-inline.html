@@ -5,6 +5,8 @@
     <div class="col-md-4">
       {% if listing_post.image %}
 				<img src="{{ listing_post.image.url }} " class ='card-img-top'/>
+        {%else%}
+        <p> image is not found </p>
 				{% endif %} 
     </div>
     <div class="col-md-8">
