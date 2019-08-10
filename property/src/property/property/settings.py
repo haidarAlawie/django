@@ -42,6 +42,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    'django.contrib.sites',
+    'django_messages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,8 +55,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'listing',
     'searches',
-]
 
+]
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,6 +69,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'property.urls'
+
 
 TEMPLATES = [
     {

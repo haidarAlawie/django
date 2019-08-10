@@ -24,6 +24,7 @@ urlpatterns = [
     path('search/', include('searches.urls')),
     path('listing/', include('listing.urls')),
     path('accounts/', include('users.urls')),
+    path('messages/',include('django_messages.urls')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

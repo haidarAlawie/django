@@ -6,6 +6,7 @@ def search_view(request):
 	query= request.GET.get("q", None)
 	template_name= 'searches/view.html'
 	user = None
+	context= {"query": query}
 	if request.user.is_authenticated:
 		print(request.user)
 		
