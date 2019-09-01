@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import ListingPostDevelopment
 from .forms import ListingDevelopmentModelForm
+from django.utils import timezone
 
 # def t(request):
 # 	qs = ListingPostDevelopment.objects.all()
@@ -17,9 +18,11 @@ def listing_development_create_view (request):
 	if form.is_valid():
 		obj = form.save(commit= False)
 		obj.user = request.user
+		now = timezone.now()
+		obj.published_date = now
 		form.save()
 		form = ListingDevelopmentModelForm()
-	template_name= 'form.html'
+	template_name= 'listing/development_create.html'
 	context = {'form': form }
 	return render(request, template_name, context)
 

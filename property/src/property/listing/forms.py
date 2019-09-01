@@ -14,6 +14,7 @@ class ListingDevelopmentForm(forms.Form):
 	ownership = forms.CharField()	
 	tenure  = forms.CharField() 
 
+
 class ListingDevelopmentModelForm(forms.ModelForm):
 	class Meta:
 		model = ListingPostDevelopment
@@ -30,7 +31,8 @@ class ListingDevelopmentModelForm(forms.ModelForm):
 		'price',
 		'rent',
 		'ownership',
-		'tenure'
+		'tenure',
+		'dropdown',
 		]
 	def clean_title(self, *args, **kwargs):
 		instance = self.instance

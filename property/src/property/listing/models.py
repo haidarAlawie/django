@@ -11,6 +11,10 @@ class ListingQuerySet(models.QuerySet):
 
 
 class ListingManager(models.Manager):
+	def published(self):
+		now = timezone.now()
+		return self.get_queryset().filter(publish_date__lte=now)
+	
 	def get_queryset(self):
 		return ListingQuerySet(self.model, using=self._db)
 
@@ -40,16 +44,18 @@ class ListingManager(models.Manager):
 
 # 		return self.get_queryset().search()
 
-
-
-
-
-
-
+COLOR_CHOICES = (
+    ('green','GREEN'),
+    ('blue', 'BLUE'),
+    ('red','RED'),
+    ('orange','ORANGE'),
+    ('black','BLACK'),
+)
 
 
 class ListingPostDevelopment(models.Model):
 	user = models.ForeignKey(User, default =1,null = True, on_delete= models.SET_NULL)
+	
 	image = models.ImageField(upload_to='image/', blank=True, null=True)
 	title = models.CharField(max_length= 120 )
 	slug = models.SlugField(unique=True)
@@ -64,7 +70,12 @@ class ListingPostDevelopment(models.Model):
 	ownership = models.CharField(null= True ,max_length=50)
 	tenure  = models.CharField(null= True ,unique=True,max_length=50) 
 	objects = ListingManager()
+	publish_date = models.DateTimeField(auto_now_add=True)
+	dropdown = models.CharField(max_length=6, choices=COLOR_CHOICES, default='green')
 
+
+
+	
 	def get_absolute_development_url(self):
 		return f"/listing/development/{self.slug}"
 
