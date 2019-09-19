@@ -1,13 +1,20 @@
 {% extends "base.html"%}
-
+{% block head%}
+<style>
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+</style>
+{%endblock%}
 {% block main%}
 <div class="col-12 bg-secondary">
 <p>back</p> 
 </div>
 <br/>
-<div class="col-7">
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style='min-height:400px'>
-  <div class="carousel-inner">
+<div class="col-5">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style='max-height:400px'>
+  <div class="carousel-inner" style="max-height: 650px;">
     <div class="carousel-item active">
       <img class="d-block w-100" src="/media/{{object.image}}" alt="First slide">
     </div>
@@ -29,6 +36,28 @@
 </div>
 
 
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: {{lati}}, lng:{{longi}} };
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 17, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK-BzyjOzfXblW_cII1fvAKWa7zTZAkW0&callback=initMap">
+    </script>
 
 	     
 	<h3> {{object.title}}<h3>

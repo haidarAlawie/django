@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from .views import index_page
+from .views import index_page, test_page
 
 urlpatterns = [
 	path('', index_page),
-    
+    path('test/', test_page ),
+    path('trial/', include('trial.urls')),
     path('search/', include('searches.urls')),
     path('listing/', include('listing.urls')),
     path('accounts/', include('users.urls')),

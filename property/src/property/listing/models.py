@@ -55,14 +55,16 @@ COLOR_CHOICES = (
 
 class ListingPostDevelopment(models.Model):
 	user = models.ForeignKey(User, default =1,null = True, on_delete= models.SET_NULL)
-	
 	image = models.ImageField(upload_to='image/', blank=True, null=True)
 	title = models.CharField(max_length= 120 )
 	slug = models.SlugField(unique=True)
 	description = models.TextField(null= True )
+	address = models.CharField(null = True, max_length= 120)
 	first_line_address = models.CharField(null= True ,max_length=50)
 	second_line_address = models.CharField(null= True ,max_length=50, blank = True)
 	postcode = models.CharField(null= True,max_length=12)
+	longitude = models.CharField(null= True,max_length=22)
+	latitude = models.CharField(null= True,max_length=22)
 	number_of_properties= models.IntegerField(null= True )
 	site_plan = models.IntegerField(null= True )
 	price = models.DecimalField(null= True ,max_digits=10, decimal_places=2)
@@ -72,7 +74,6 @@ class ListingPostDevelopment(models.Model):
 	objects = ListingManager()
 	publish_date = models.DateTimeField(auto_now_add=True)
 	dropdown = models.CharField(max_length=6, choices=COLOR_CHOICES, default='green')
-
 
 
 	

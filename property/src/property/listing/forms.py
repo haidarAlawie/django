@@ -1,18 +1,22 @@
 from django import forms
 from .models import ListingPostDevelopment
 class ListingDevelopmentForm(forms.Form):
-	title = forms.CharField()
+	title = forms.CharField(widget=forms.TextInput(attrs={'id':'autocomplete'}))
 	slug = forms.SlugField()
+	address = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
 	first_line_address = forms.CharField()
 	second_line_address = forms.CharField()
 	postcode = forms.CharField()
+	longitude = forms.CharField()
+	latitude = forms.CharField()
 	number_of_properties= forms.IntegerField()
 	site_plan = forms.IntegerField()
 	price = forms.DecimalField()
 	rent = forms.DecimalField()
 	ownership = forms.CharField()	
 	tenure  = forms.CharField() 
+	 
 
 
 class ListingDevelopmentModelForm(forms.ModelForm):
@@ -22,10 +26,13 @@ class ListingDevelopmentModelForm(forms.ModelForm):
 		'title',
 		'image',
 		'slug',
+		'address',
 		'description', 
 		'first_line_address' ,
 		'second_line_address',
 		'postcode',
+		'longitude',
+		'latitude',
 		'number_of_properties',
 		'site_plan',
 		'price',
@@ -33,6 +40,7 @@ class ListingDevelopmentModelForm(forms.ModelForm):
 		'ownership',
 		'tenure',
 		'dropdown',
+	
 		]
 	def clean_title(self, *args, **kwargs):
 		instance = self.instance

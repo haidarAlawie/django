@@ -9,4 +9,6 @@ def index_page(request):
 	template_name= 'index.html'
 	return render(request, template_name, context)
 
-
+def test_page(request):
+	template_name= 'test.html'
+	return render(request, template_name)

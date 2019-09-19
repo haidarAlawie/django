@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+
+{% block head%}
+
+
+
+{%endblock%}
+
+{% block main%}
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"> </script>
+
+
+
+<script type="text/javascript">
+	
+google.maps.even.AddDomListener(window,'load',initialize);
+function initialize(){
+	var autocomplete=new google.maps.places.Autocomplete(document.getElementById('txtautocomplete'));
+ 
+google.maps.events.AddListener(autocomplete, 'place_changed',function(){
+	var places = autocomplete.getPlace();
+
+	var location = "<b>Location:</b>" + places.formatted_address + "<br/>";
+	location += "<b>Latitude:</b>" + places.geometry.location.A + "<br/>";
+
+	location += "<b>Latitude:</b>" + places.geometry.location.F + "<br/>";
+
+
+
+	});
+
+	
+
+};
+</script>
+
+
+
+<span> Location: </span><input type="text" id="txtautocomplete" placeholder="enter the address"/><br/> <br/>
+
+
+
+
+
+
+
+
+
+{%endblock%}
